@@ -1,0 +1,14 @@
+C:\source\ServiceBills\Lib\bin\Debug\net9.0\Lib.deps.json
+C:\source\ServiceBills\Lib\bin\Debug\net9.0\Lib.dll
+C:\source\ServiceBills\Lib\bin\Debug\net9.0\Lib.pdb
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Interop.QBFC16Lib.dll
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.csproj.ResolveComReference.cache
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.AssemblyInfoInputs.cache
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.AssemblyInfo.cs
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.csproj.CoreCompileInputs.cache
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.sourcelink.json
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.dll
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\refint\Lib.dll
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\Lib.pdb
+C:\source\ServiceBills\Lib\obj\Debug\net9.0\ref\Lib.dll

@@ -1,0 +1,133 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\source\\ServiceBills\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F3D717-2502-481E-B2E4-1443E80A469F}|ServiceBillsCLI\\ServiceBillsCLI.csproj|c:\\source\\servicebills\\servicebillscli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F3D717-2502-481E-B2E4-1443E80A469F}|ServiceBillsCLI\\ServiceBillsCLI.csproj|solutionrelative:servicebillscli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F3D717-2502-481E-B2E4-1443E80A469F}|ServiceBillsCLI\\ServiceBillsCLI.csproj|c:\\source\\servicebills\\servicebillscli\\servicebillscli.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E9F3D717-2502-481E-B2E4-1443E80A469F}|ServiceBillsCLI\\ServiceBillsCLI.csproj|solutionrelative:servicebillscli\\servicebillscli.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|c:\\source\\servicebills\\servicebillslib\\vendorquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|solutionrelative:servicebillslib\\vendorquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|c:\\source\\servicebills\\servicebillslib\\qbvendor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|solutionrelative:servicebillslib\\qbvendor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|c:\\source\\servicebills\\servicebillslib\\servicebillslib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{622AACA8-6685-4DFB-BBD2-488CD2D842AA}|ServiceBillsLib\\ServiceBillsLib.csproj|solutionrelative:servicebillslib\\servicebillslib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C68159A-857D-4FE0-8E04-C769768A7925}|ServiceBillsTests\\ServiceBillsTests.csproj|c:\\source\\servicebills\\servicebillstests\\servicebillstests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2C68159A-857D-4FE0-8E04-C769768A7925}|ServiceBillsTests\\ServiceBillsTests.csproj|solutionrelative:servicebillstests\\servicebillstests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C68159A-857D-4FE0-8E04-C769768A7925}|ServiceBillsTests\\ServiceBillsTests.csproj|c:\\source\\servicebills\\servicebillstests\\vendorquerytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C68159A-857D-4FE0-8E04-C769768A7925}|ServiceBillsTests\\ServiceBillsTests.csproj|solutionrelative:servicebillstests\\vendorquerytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ServiceBillsCLI.csproj",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsCLI\\ServiceBillsCLI.csproj",
+              "RelativeDocumentMoniker": "ServiceBillsCLI\\ServiceBillsCLI.csproj",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsCLI\\ServiceBillsCLI.csproj",
+              "RelativeToolTip": "ServiceBillsCLI\\ServiceBillsCLI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-09T20:53:19.418Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsCLI\\Program.cs",
+              "RelativeDocumentMoniker": "ServiceBillsCLI\\Program.cs",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsCLI\\Program.cs",
+              "RelativeToolTip": "ServiceBillsCLI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T20:50:13.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QBVendor.cs",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsLib\\QBVendor.cs",
+              "RelativeDocumentMoniker": "ServiceBillsLib\\QBVendor.cs",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsLib\\QBVendor.cs",
+              "RelativeToolTip": "ServiceBillsLib\\QBVendor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T20:52:31.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServiceBillsLib.csproj",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsLib\\ServiceBillsLib.csproj",
+              "RelativeDocumentMoniker": "ServiceBillsLib\\ServiceBillsLib.csproj",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsLib\\ServiceBillsLib.csproj",
+              "RelativeToolTip": "ServiceBillsLib\\ServiceBillsLib.csproj",
+              "ViewState": "AgIAAAAAAAAANDMzMzPbvx0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-05T20:29:18.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VendorQuery.cs",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsLib\\VendorQuery.cs",
+              "RelativeDocumentMoniker": "ServiceBillsLib\\VendorQuery.cs",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsLib\\VendorQuery.cs",
+              "RelativeToolTip": "ServiceBillsLib\\VendorQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T17:33:18.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ServiceBillsTests.csproj",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsTests\\ServiceBillsTests.csproj",
+              "RelativeDocumentMoniker": "ServiceBillsTests\\ServiceBillsTests.csproj",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsTests\\ServiceBillsTests.csproj",
+              "RelativeToolTip": "ServiceBillsTests\\ServiceBillsTests.csproj",
+              "ViewState": "AgIAAAAAAADlmZmZmRkowAMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-09T19:54:26.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VendorQueryTests.cs",
+              "DocumentMoniker": "C:\\source\\ServiceBills\\ServiceBillsTests\\VendorQueryTests.cs",
+              "RelativeDocumentMoniker": "ServiceBillsTests\\VendorQueryTests.cs",
+              "ToolTip": "C:\\source\\ServiceBills\\ServiceBillsTests\\VendorQueryTests.cs",
+              "RelativeToolTip": "ServiceBillsTests\\VendorQueryTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T20:30:43.959Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
