@@ -4,8 +4,7 @@ namespace QB_ServiceBills_CLI
 {
     public class Program
     {
-        public static void Main()k
-        public static void Main()k
+        public static void Main()
         {
             List<ServiceBill> serviceBills = ServiceBillReader.QueryAllServiceBills();
 
