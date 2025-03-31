@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Serilog;
 using QBFC16Lib;
 using static QB_ServiceBills_Test.CommonMethods; // Reuse your shared helpers
+using QB_ServiceBills_Lib;
 
 namespace QB_ServiceBills_Test
 {
