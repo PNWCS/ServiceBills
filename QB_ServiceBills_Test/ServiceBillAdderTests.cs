@@ -27,9 +27,9 @@ namespace QB_ServiceBills_Test
             try
             {
                 // 1) Clean logs, etc.
-                EnsureLogFileClosed();
-                DeleteOldLogFiles();
-                ResetLogger();
+                CommonMethods.EnsureLogFileClosed();
+                CommonMethods.DeleteOldLogFiles();
+                CommonMethods.ResetLogger();
 
                 // 2) Create random vendors
                 using (var qbSession = new QuickBooksSession(AppConfig.QB_APP_NAME))
@@ -166,6 +166,13 @@ namespace QB_ServiceBills_Test
 
             var resp = qbSession.SendRequest(request);
             CheckForError(resp, $"Deleting ServiceBill TxnID={txnID}");
+
+            // Re-check to ensure it's gone
+            bool stillExists = CheckBillInQB(qbSession, txnID);
+            if (stillExists)
+            {
+                throw new Exception($"Bill with TxnID {txnID} still exists in QB and blocks vendor deletion.");
+            }
         }
 
         //--------------------------------------------------------------------------------
@@ -180,6 +187,8 @@ namespace QB_ServiceBills_Test
 
             var resp = qbSession.SendRequest(request);
             CheckForError(resp, $"Deleting {listDelType} {listID}");
+
+
         }
 
         //--------------------------------------------------------------------------------
