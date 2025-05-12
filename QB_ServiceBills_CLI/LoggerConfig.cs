@@ -28,6 +28,4 @@ namespace QB_ServiceBills_CLI
             Log.CloseAndFlush();
         }
     }
-
-
 }

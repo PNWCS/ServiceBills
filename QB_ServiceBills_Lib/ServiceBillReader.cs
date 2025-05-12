@@ -40,7 +40,7 @@ namespace QB_ServiceBills_Lib
                 if (billResp.StatusCode != 0 || billResp.Detail == null)
                     return serviceBills;
 
-                IBillRetList billList = billResp.Detail as IBillRetList;
+                IBillRetList? billList = billResp.Detail as IBillRetList;
                 if (billList == null || billList.Count == 0)
                     return serviceBills;
 
