@@ -8,7 +8,7 @@ namespace QB_ServiceBills_Lib
     {
         public static void AddServiceBills(List<ServiceBill> serviceBillsToAdd)
         {
-            QBSessionManager sessionManager = null;
+            QBSessionManager? sessionManager = null;
 
             try
             {
@@ -59,7 +59,7 @@ namespace QB_ServiceBills_Lib
                     else
                     {
                         var billRet = resp.Detail as IBillRet;
-                        string txnID = billRet?.TxnID?.GetValue();
+                        string? txnID = billRet?.TxnID?.GetValue();
                         serviceBill.QBID = txnID ?? "";
 
                         Log.Information($"✅ Bill added for '{serviceBill.VendorName}' | TxnID: {txnID}");

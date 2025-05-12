@@ -8,7 +8,10 @@
         public string Memo { get; set; } = "";
         public string InvoiceNum { get; set; } = "";
         public List<ServiceBillLine> Lines { get; set; } = new();
+        public ServiceBillStatus Status { get; set; } = ServiceBillStatus.Unknown;  // <-- ADD THIS PROPERTY
+
         public ServiceBill() { }
+
         public ServiceBill(string QBID, string VendorName, DateTime BillDate, string Memo, string InvoiceNum, List<ServiceBillLine> Lines)
         {
             this.QBID = QBID;
@@ -17,10 +20,9 @@
             this.Memo = Memo;
             this.InvoiceNum = InvoiceNum;
             this.Lines = Lines;
+            this.Status = ServiceBillStatus.Unknown;
         }
-
     }
-
 
     public class ServiceBillLine
     {
@@ -34,5 +36,15 @@
             this.AccountName = AccountName;
             this.Amount = Amount;
         }
+    }
+
+    public enum ServiceBillStatus
+    {
+        Unknown,
+        Unchanged,
+        Different,
+        Added,
+        FailedToAdd,
+        Missing
     }
 }

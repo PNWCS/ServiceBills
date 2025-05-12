@@ -5,9 +5,10 @@ using System.IO;
 using System.Linq;
 using Serilog;
 using Xunit;
-using QB_ServiceBills_Lib;          // ServiceBill, ServiceBillLine, ServiceBillStatus (provided in model lib)
-using QBFC16Lib;                   // QuickBooks Desktop SDK
-using static QB_ServiceBills_Test.CommonMethods;   // logging helpers, QB session wrapper, etc.
+using QB_ServiceBills_Lib;
+using QBFC16Lib;
+using static QB_ServiceBills_Test.CommonMethods;
+using QB_ServiceBills_Test;
 
 namespace QB_ServiceBill_Test
 {
@@ -22,13 +23,13 @@ namespace QB_ServiceBill_Test
             DeleteOldLogFiles();
             ResetLogger();
 
-            var firstCompareResult  = new List<ServiceBill>();
+            var firstCompareResult = new List<ServiceBill>();
             var secondCompareResult = new List<ServiceBill>();
 
             string vendorListId = string.Empty;
-            string vendorName   = "TestVendor_" + Guid.NewGuid().ToString("N")[..8];
-            string acctListId   = string.Empty;
-            string expenseAcct  = "TestExpense_" + Guid.NewGuid().ToString("N")[..8];
+            string vendorName = "TestVendor_" + Guid.NewGuid().ToString("N")[..8];
+            string acctListId = string.Empty;
+            string expenseAcct = "TestExpense_" + Guid.NewGuid().ToString("N")[..8];
 
             try
             {
@@ -36,23 +37,23 @@ namespace QB_ServiceBill_Test
                 using (var qb = new QuickBooksSession(AppConfig.QB_APP_NAME))
                 {
                     vendorListId = AddVendor(qb, vendorName);
-                    acctListId   = AddExpenseAccount(qb, expenseAcct);
+                    acctListId = AddExpenseAccount(qb, expenseAcct);
                 }
 
                 // ---------- 2.  BUILD FIVE COMPANY-SIDE SERVICE BILLS ----------
                 var initialBills = Enumerable.Range(0, 5).Select(i =>
                 {
                     string invoiceNum = $"SB-{Guid.NewGuid():N}".Substring(0, 12);
-                    double amount     = Math.Round(new Random().NextDouble() * 500 + 50, 2);
+                    double amount = Math.Round(new Random().NextDouble() * 500 + 50, 2);
 
                     return new ServiceBill
                     {
-                        QBID        = string.Empty,
-                        VendorName  = vendorName,
-                        BillDate    = DateTime.Today,
-                        Memo        = $"AutoTest Memo #{i}",
-                        InvoiceNum  = invoiceNum,
-                        Lines       = new()
+                        QBID = string.Empty,
+                        VendorName = vendorName,
+                        BillDate = DateTime.Today,
+                        Memo = $"AutoTest Memo #{i}",
+                        InvoiceNum = invoiceNum,
+                        Lines = new()
                         {
                             new ServiceBillLine(expenseAcct, amount)
                         }
@@ -70,9 +71,9 @@ namespace QB_ServiceBill_Test
                 }
 
                 // ---------- 4.  MUTATE LIST ----------
-                var updatedBills  = new List<ServiceBill>(initialBills);
-                var billToRemove  = updatedBills[0];          // will become ‘Missing’
-                var billToModify  = updatedBills[1];          // will become ‘Different’
+                var updatedBills = new List<ServiceBill>(initialBills);
+                var billToRemove = updatedBills[0];          // will become ‘Missing’
+                var billToModify = updatedBills[1];          // will become ‘Different’
 
                 updatedBills.Remove(billToRemove);
                 billToModify.Memo += "_MOD";
@@ -82,7 +83,7 @@ namespace QB_ServiceBill_Test
 
                 var byInvoice = secondCompareResult.ToDictionary(b => b.InvoiceNum);
 
-                Assert.Equal(ServiceBillStatus.Missing,   byInvoice[billToRemove.InvoiceNum].Status);
+                Assert.Equal(ServiceBillStatus.Missing, byInvoice[billToRemove.InvoiceNum].Status);
                 Assert.Equal(ServiceBillStatus.Different, byInvoice[billToModify.InvoiceNum].Status);
 
                 foreach (var bill in updatedBills.Where(b => b.InvoiceNum != billToModify.InvoiceNum))
@@ -98,7 +99,7 @@ namespace QB_ServiceBill_Test
                     foreach (var b in firstCompareResult.Where(b => !string.IsNullOrEmpty(b.QBID)))
                         DeleteBill(qb, b.QBID);
 
-                    if (!string.IsNullOrEmpty(acctListId))   DeleteAccount(qb, acctListId);
+                    if (!string.IsNullOrEmpty(acctListId)) DeleteAccount(qb, acctListId);
                     if (!string.IsNullOrEmpty(vendorListId)) DeleteVendor(qb, vendorListId);
                 }
                 catch (Exception ex)
@@ -115,17 +116,87 @@ namespace QB_ServiceBill_Test
             string logs = File.ReadAllText(logFile);
 
             Assert.Contains("ServiceBillComparator Initialized", logs);
-            Assert.Contains("ServiceBillComparator Completed",   logs);
+            Assert.Contains("ServiceBillComparator Completed", logs);
 
             foreach (var bill in firstCompareResult.Concat(secondCompareResult))
                 Assert.Contains($"ServiceBill {bill.InvoiceNum} is {bill.Status}.", logs);
         }
 
         // ---------------- QB helper methods (unchanged) ----------------
-        private string AddVendor(QuickBooksSession qb, string name)        { /* ... */ }
-        private string AddExpenseAccount(QuickBooksSession qb, string name){ /* ... */ }
-        private void   DeleteBill(QuickBooksSession qb, string txnID)      { /* ... */ }
-        private void   DeleteVendor(QuickBooksSession qb, string listID)   { /* ... */ }
-        private void   DeleteAccount(QuickBooksSession qb, string listID)  { /* ... */ }
+        private string AddVendor(QuickBooksSession qb, string name)
+        {
+            var request = qb.CreateRequestSet();
+            var vendAdd = request.AppendVendorAddRq();
+            vendAdd.Name.SetValue(name);
+
+            var response = qb.SendRequest(request);
+            var resp = response.ResponseList.GetAt(0);
+
+            if (resp.StatusCode != 0)
+                throw new Exception($"Failed to add vendor '{name}': {resp.StatusMessage}");
+
+            var vendRet = resp.Detail as IVendorRet;
+            return vendRet?.ListID?.GetValue() ?? throw new Exception("Vendor ListID missing after add.");
+        }
+
+        private string AddExpenseAccount(QuickBooksSession qb, string name)
+        {
+            var request = qb.CreateRequestSet();
+            var acctAdd = request.AppendAccountAddRq();
+            acctAdd.Name.SetValue(name);
+            acctAdd.AccountType.SetValue(ENAccountType.atExpense);
+
+            var response = qb.SendRequest(request);
+            var resp = response.ResponseList.GetAt(0);
+
+            if (resp.StatusCode != 0)
+                throw new Exception($"Failed to add expense account '{name}': {resp.StatusMessage}");
+
+            var acctRet = resp.Detail as IAccountRet;
+            return acctRet?.ListID?.GetValue() ?? throw new Exception("Account ListID missing after add.");
+        }
+
+        private void DeleteBill(QuickBooksSession qb, string txnID)
+        {
+            var request = qb.CreateRequestSet();
+            var txnDel = request.AppendTxnDelRq();
+            txnDel.TxnDelType.SetValue(ENTxnDelType.tdtBill);
+            txnDel.TxnID.SetValue(txnID);
+
+            var response = qb.SendRequest(request);
+            var resp = response.ResponseList.GetAt(0);
+
+            if (resp.StatusCode != 0)
+                throw new Exception($"Failed to delete bill TxnID '{txnID}': {resp.StatusMessage}");
+        }
+
+        private void DeleteVendor(QuickBooksSession qb, string listID)
+        {
+            var request = qb.CreateRequestSet();
+            var vendDel = request.AppendListDelRq();
+            vendDel.ListDelType.SetValue(ENListDelType.ldtVendor);
+            vendDel.ListID.SetValue(listID);
+
+            var response = qb.SendRequest(request);
+            var resp = response.ResponseList.GetAt(0);
+
+            if (resp.StatusCode != 0)
+                throw new Exception($"Failed to delete vendor ListID '{listID}': {resp.StatusMessage}");
+        }
+
+        private void DeleteAccount(QuickBooksSession qb, string listID)
+        {
+            var request = qb.CreateRequestSet();
+            var acctDel = request.AppendListDelRq();
+            acctDel.ListDelType.SetValue(ENListDelType.ldtAccount);
+            acctDel.ListID.SetValue(listID);
+
+            var response = qb.SendRequest(request);
+            var resp = response.ResponseList.GetAt(0);
+
+            if (resp.StatusCode != 0)
+                throw new Exception($"Failed to delete account ListID '{listID}': {resp.StatusMessage}");
+        }
+
     }
 }
